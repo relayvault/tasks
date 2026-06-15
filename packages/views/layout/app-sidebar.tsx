@@ -18,22 +18,16 @@ import { CSS } from "@dnd-kit/utilities";
 import {
   Inbox,
   ListTodo,
-  Bot,
-  Monitor,
   ChevronDown,
   ChevronRight,
   Settings,
   LogOut,
   Plus,
   Check,
-  BookOpenText,
   SquarePen,
   CircleUser,
   FolderKanban,
-  BarChart3,
   X,
-  Zap,
-  Users,
 } from "lucide-react";
 import { WorkspaceAvatar } from "../workspace/workspace-avatar";
 import { ActorAvatar } from "@multica/ui/components/common/actor-avatar";
@@ -73,7 +67,6 @@ import { inboxKeys, deduplicateInboxItems } from "@multica/core/inbox/queries";
 import { api, ApiError } from "@multica/core/api";
 import { useModalStore } from "@multica/core/modals";
 import { useConfigStore } from "@multica/core/config";
-import { useMyRuntimesNeedUpdate } from "@multica/core/runtimes/hooks";
 import { pinListOptions } from "@multica/core/pins/queries";
 import { useDeletePin, useReorderPins } from "@multica/core/pins/mutations";
 import { issueDetailOptions } from "@multica/core/issues/queries";
@@ -109,12 +102,6 @@ type NavKey =
   | "myIssues"
   | "issues"
   | "projects"
-  | "autopilots"
-  | "agents"
-  | "squads"
-  | "usage"
-  | "runtimes"
-  | "skills"
   | "settings";
 
 // Static schema (key + icon) — labels resolved at render via useT("layout").
@@ -123,12 +110,6 @@ type NavLabelKey =
   | "my_issues"
   | "issues"
   | "projects"
-  | "autopilots"
-  | "agents"
-  | "squads"
-  | "usage"
-  | "runtimes"
-  | "skills"
   | "settings";
 
 const personalNav: { key: NavKey; labelKey: NavLabelKey; icon: typeof Inbox }[] = [
@@ -139,15 +120,9 @@ const personalNav: { key: NavKey; labelKey: NavLabelKey; icon: typeof Inbox }[] 
 const workspaceNav: { key: NavKey; labelKey: NavLabelKey; icon: typeof Inbox }[] = [
   { key: "issues", labelKey: "issues", icon: ListTodo },
   { key: "projects", labelKey: "projects", icon: FolderKanban },
-  { key: "autopilots", labelKey: "autopilots", icon: Zap },
-  { key: "agents", labelKey: "agents", icon: Bot },
-  { key: "squads", labelKey: "squads", icon: Users },
-  { key: "usage", labelKey: "usage", icon: BarChart3 },
 ];
 
 const configureNav: { key: NavKey; labelKey: NavLabelKey; icon: typeof Inbox }[] = [
-  { key: "runtimes", labelKey: "runtimes", icon: Monitor },
-  { key: "skills", labelKey: "skills", icon: BookOpenText },
   { key: "settings", labelKey: "settings", icon: Settings },
 ];
 
@@ -363,7 +338,6 @@ export function AppSidebar({ topSlot, searchSlot, headerClassName, headerStyle }
     () => deduplicateInboxItems(inboxItems).filter((i) => !i.read).length,
     [inboxItems],
   );
-  const hasRuntimeUpdates = useMyRuntimesNeedUpdate(wsId);
   const { data: pinnedItems = EMPTY_PINS } = useQuery({
     ...pinListOptions(wsId ?? "", userId ?? ""),
     enabled: !!wsId && !!userId,
@@ -719,9 +693,6 @@ export function AppSidebar({ topSlot, searchSlot, headerClassName, headerStyle }
                       >
                         <item.icon />
                         <span>{t(($) => $.nav[item.labelKey])}</span>
-                        {item.key === "runtimes" && hasRuntimeUpdates && (
-                          <span className="ml-auto size-1.5 rounded-full bg-destructive" />
-                        )}
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   );
