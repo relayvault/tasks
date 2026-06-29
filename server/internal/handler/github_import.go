@@ -387,7 +387,9 @@ type gitHubIssue struct {
 }
 
 // mapGitHubLabelsToPriority maps common GitHub label names to Multica priority.
-func mapGitHubLabelsToPriority(labels []struct{ Name string }) string {
+func mapGitHubLabelsToPriority(labels []struct {
+	Name string `json:"name"`
+}) string {
 	for _, l := range labels {
 		name := strings.ToLower(l.Name)
 		switch {
