@@ -102,6 +102,7 @@ import type {
   GitHubPullRequest,
   ListGitHubInstallationsResponse,
   GitHubConnectResponse,
+  GitHubImportRepo,
   ListLarkInstallationsResponse,
   BeginLarkInstallResponse,
   LarkInstallStatusResponse,
@@ -2088,6 +2089,44 @@ export class ApiClient {
 
   async listIssuePullRequests(issueId: string): Promise<{ pull_requests: GitHubPullRequest[] }> {
     return this.fetch(`/api/issues/${issueId}/pull-requests`);
+  }
+
+  // GitHub Import (PAT-based)
+  async getGitHubPATStatus(): Promise<{ has_token: boolean; hint?: string }> {
+    return this.fetch("/api/github-import/token");
+  }
+
+  async saveGitHubPAT(token: string): Promise<{ has_token: boolean; hint: string }> {
+    return this.fetch("/api/github-import/token", {
+      method: "POST",
+      body: JSON.stringify({ token }),
+    });
+  }
+
+  async deleteGitHubPAT(): Promise<void> {
+    await this.fetch("/api/github-import/token", { method: "DELETE" });
+  }
+
+  async listGitHubImportRepos(params?: {
+    page?: number;
+    per_page?: number;
+    q?: string;
+  }): Promise<{ repos: GitHubImportRepo[] }> {
+    const search = new URLSearchParams();
+    if (params?.page) search.set("page", String(params.page));
+    if (params?.per_page) search.set("per_page", String(params.per_page));
+    if (params?.q) search.set("q", params.q);
+    return this.fetch(`/api/github-import/repos?${search}`);
+  }
+
+  async importGitHubRepo(repoFullName: string): Promise<{
+    project: Project;
+    issues_created: number;
+  }> {
+    return this.fetch("/api/github-import/import", {
+      method: "POST",
+      body: JSON.stringify({ repo_full_name: repoFullName }),
+    });
   }
 
   // Lark integration

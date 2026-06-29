@@ -116,5 +116,26 @@
   },
   "chip": {
     "fallback_label": "项目"
+  },
+  "github_import": {
+    "button": "从 GitHub 导入",
+    "modal_title": "从 GitHub 导入",
+    "token_step_title": "连接 GitHub",
+    "token_step_description": "输入具有 repo 权限的 GitHub 个人访问令牌 (PAT) 以浏览您的仓库。",
+    "token_placeholder": "ghp_xxxxxxxxxxxxxxxxxxxx",
+    "token_save": "连接",
+    "token_saving": "验证中...",
+    "token_connected": "已连接",
+    "token_hint": "令牌尾号 ****{{hint}}",
+    "token_disconnect": "断开连接",
+    "repos_step_title": "选择仓库",
+    "repos_search_placeholder": "搜索仓库...",
+    "repos_empty": "未找到仓库",
+    "repos_private_badge": "私有",
+    "repos_issues": "{{count}} 个未关闭的议题",
+    "import_button": "导入",
+    "importing": "导入中...",
+    "import_success": "已将 {{count}} 个议题导入项目「{{project}}」",
+    "import_failed": "导入失败"
   }
 }

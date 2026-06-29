@@ -76,3 +76,17 @@ export interface GitHubConnectResponse {
   url?: string;
   configured: boolean;
 }
+
+export interface GitHubImportRepo {
+  id: number;
+  full_name: string;
+  name: string;
+  owner: string;
+  description: string;
+  html_url: string;
+  private: boolean;
+  stargazers_count: number;
+  language: string;
+  updated_at: string;
+  open_issues_count: number;
+}
