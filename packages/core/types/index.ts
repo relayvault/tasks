@@ -105,6 +105,7 @@ export type {
   GitHubPullRequestState,
   ListGitHubInstallationsResponse,
   GitHubConnectResponse,
+  GitHubImportRepo,
 } from "./github";
 export type {
   LarkInstallation,

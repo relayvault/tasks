@@ -116,5 +116,26 @@
   },
   "chip": {
     "fallback_label": "プロジェクト"
+  },
+  "github_import": {
+    "button": "GitHub からインポート",
+    "modal_title": "GitHub からインポート",
+    "token_step_title": "GitHub に接続",
+    "token_step_description": "リポジトリを閲覧するには、repo スコープを持つ GitHub パーソナルアクセストークン (PAT) を入力してください。",
+    "token_placeholder": "ghp_xxxxxxxxxxxxxxxxxxxx",
+    "token_save": "接続",
+    "token_saving": "確認中...",
+    "token_connected": "接続済み",
+    "token_hint": "トークン末尾 ****{{hint}}",
+    "token_disconnect": "切断",
+    "repos_step_title": "リポジトリを選択",
+    "repos_search_placeholder": "リポジトリを検索...",
+    "repos_empty": "リポジトリが見つかりません",
+    "repos_private_badge": "プライベート",
+    "repos_issues": "{{count}} 件のオープンイシュー",
+    "import_button": "インポート",
+    "importing": "インポート中...",
+    "import_success": "{{count}} 件のイシューをプロジェクト「{{project}}」にインポートしました",
+    "import_failed": "インポートに失敗しました"
   }
 }

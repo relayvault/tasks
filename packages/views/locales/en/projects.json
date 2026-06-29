@@ -116,5 +116,26 @@
   },
   "chip": {
     "fallback_label": "Project"
+  },
+  "github_import": {
+    "button": "Import from GitHub",
+    "modal_title": "Import from GitHub",
+    "token_step_title": "Connect GitHub",
+    "token_step_description": "Enter a GitHub Personal Access Token (PAT) with repo scope to browse your repositories.",
+    "token_placeholder": "ghp_xxxxxxxxxxxxxxxxxxxx",
+    "token_save": "Connect",
+    "token_saving": "Verifying...",
+    "token_connected": "Connected",
+    "token_hint": "Token ending in ****{{hint}}",
+    "token_disconnect": "Disconnect",
+    "repos_step_title": "Select a repository",
+    "repos_search_placeholder": "Search repositories...",
+    "repos_empty": "No repositories found",
+    "repos_private_badge": "Private",
+    "repos_issues": "{{count}} open issues",
+    "import_button": "Import",
+    "importing": "Importing...",
+    "import_success": "Imported {{count}} issues into project \"{{project}}\"",
+    "import_failed": "Import failed"
   }
 }

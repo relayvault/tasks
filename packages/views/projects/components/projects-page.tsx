@@ -24,6 +24,14 @@ import { useProjectViewStore } from "@multica/core/projects";
 import { ProjectStatusBadge, ProjectPriorityBadge } from "./project-badge";
 import { ProjectLeadPicker } from "./project-lead-picker";
 
+function GithubIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M12 .5C5.73.5.66 5.57.66 11.84c0 5.01 3.25 9.26 7.76 10.76.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.13-3.16.69-3.83-1.34-3.83-1.34-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.52-.29-5.18-1.26-5.18-5.62 0-1.24.45-2.26 1.18-3.06-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.06 0 4.37-2.67 5.32-5.21 5.61.41.35.78 1.04.78 2.1 0 1.52-.01 2.74-.01 3.11 0 .3.21.66.79.55 4.51-1.5 7.76-5.75 7.76-10.76C23.34 5.57 18.27.5 12 .5Z" />
+    </svg>
+  );
+}
+
 const COMPACT_GRID = "grid w-full min-w-[740px] grid-cols-[24px_minmax(200px,1fr)_96px_96px_80px_80px_80px]";
 
 function ProjectCard({ project }: { project: Project }) {
@@ -188,6 +196,7 @@ export function ProjectsPage() {
   const isCompact = viewMode === "compact";
   const { data: projects = [], isLoading } = useQuery(projectListOptions(wsId));
   const openCreateProject = () => useModalStore.getState().open("create-project");
+  const openGitHubImport = () => useModalStore.getState().open("github-import");
 
   const [search, setSearch] = useState("");
   const filteredProjects = useMemo(() => {
@@ -208,10 +217,16 @@ export function ProjectsPage() {
             <span className="text-xs text-muted-foreground tabular-nums">{projects.length}</span>
           )}
         </div>
-        <Button size="sm" variant="outline" onClick={openCreateProject}>
-          <Plus className="h-3.5 w-3.5 mr-1" />
-          {t(($) => $.page.new_project)}
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button size="sm" variant="outline" onClick={openGitHubImport}>
+            <GithubIcon className="h-3.5 w-3.5 mr-1" />
+            {t(($) => $.github_import.button)}
+          </Button>
+          <Button size="sm" variant="outline" onClick={openCreateProject}>
+            <Plus className="h-3.5 w-3.5 mr-1" />
+            {t(($) => $.page.new_project)}
+          </Button>
+        </div>
       </PageHeader>
 
       <div className="flex flex-1 min-h-0 flex-col overflow-hidden">

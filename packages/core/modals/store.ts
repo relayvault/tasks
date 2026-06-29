@@ -13,6 +13,7 @@ type ModalType =
   | "issue-add-child"
   | "issue-delete-confirm"
   | "issue-backlog-agent-hint"
+  | "github-import"
   | null;
 
 interface ModalStore {

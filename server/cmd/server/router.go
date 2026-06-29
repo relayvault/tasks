@@ -760,6 +760,15 @@ func NewRouterWithOptions(pool *pgxpool.Pool, hub *realtime.Hub, bus *events.Bus
 				})
 			})
 
+			// GitHub Import
+			r.Route("/api/github-import", func(r chi.Router) {
+				r.Get("/token", h.GetGitHubPATStatus)
+				r.Post("/token", h.SaveGitHubPAT)
+				r.Delete("/token", h.DeleteGitHubPAT)
+				r.Get("/repos", h.ListGitHubRepos)
+				r.Post("/import", h.ImportGitHubRepo)
+			})
+
 			// Squads
 			r.Route("/api/squads", func(r chi.Router) {
 				r.Get("/", h.ListSquads)
