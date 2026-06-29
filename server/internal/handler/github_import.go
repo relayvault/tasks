@@ -8,6 +8,7 @@ import (
 	"io"
 	"log/slog"
 	"net/http"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
@@ -242,7 +243,7 @@ func (h *Handler) ListGitHubRepos(w http.ResponseWriter, r *http.Request) {
 	if search != "" {
 		apiURL = fmt.Sprintf(
 			"https://api.github.com/search/repositories?q=%s+user:@me&sort=updated&per_page=%d&page=%d",
-			search, perPage, page,
+			url.QueryEscape(search), perPage, page,
 		)
 	} else {
 		apiURL = fmt.Sprintf(
@@ -579,15 +580,17 @@ func fetchGitHubIssues(ctx context.Context, token, owner, repo string, limit int
 		if err != nil {
 			return nil, err
 		}
-		defer resp.Body.Close()
 		if resp.StatusCode != http.StatusOK {
 			body, _ := io.ReadAll(resp.Body)
+			resp.Body.Close()
 			return nil, fmt.Errorf("GitHub API returned %d: %s", resp.StatusCode, string(body))
 		}
 		var issues []gitHubIssue
 		if err := json.NewDecoder(resp.Body).Decode(&issues); err != nil {
+			resp.Body.Close()
 			return nil, err
 		}
+		resp.Body.Close()
 		if len(issues) == 0 {
 			break
 		}
