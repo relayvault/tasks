@@ -11,6 +11,7 @@ import { AddChildIssueModal } from "./add-child-issue";
 import { DeleteIssueConfirmModal } from "./delete-issue-confirm";
 import { BacklogAgentHintModal } from "./backlog-agent-hint";
 import { GitHubImportModal } from "./github-import";
+import { CSVImportModal } from "./csv-import";
 
 export function ModalRegistry() {
   const modal = useModalStore((s) => s.modal);
@@ -42,6 +43,8 @@ export function ModalRegistry() {
       return <BacklogAgentHintModal onClose={close} data={data} />;
     case "github-import":
       return <GitHubImportModal onClose={close} />;
+    case "csv-import":
+      return <CSVImportModal onClose={close} data={data} />;
     default:
       return null;
   }

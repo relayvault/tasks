@@ -137,5 +137,19 @@
     "importing": "インポート中...",
     "import_success": "{{count}} 件のイシューをプロジェクト「{{project}}」にインポートしました",
     "import_failed": "インポートに失敗しました"
+  },
+  "csv_import": {
+    "button": "CSV をインポート",
+    "modal_title": "CSV からイシューをインポート",
+    "description": "CSV ファイルをアップロードして、このプロジェクトにイシューを一括作成します。Epic 行は親イシューになり、Task 行は対応する Epic の下にネストされます。",
+    "drop_hint": "クリックして CSV ファイルを選択するか、ここにドラッグ＆ドロップしてください",
+    "format_hint": "対応する列：Type、Title、Description、Status、Epic、Labels、Assignee、Due Date。必須は Title のみです。",
+    "invalid_file": ".csv ファイルを選択してください",
+    "cancel": "キャンセル",
+    "import_button": "インポート",
+    "importing": "インポート中...",
+    "import_success": "{{count}} 件のイシューをインポートしました",
+    "import_partial": "{{count}} 行がエラーのためスキップされました",
+    "import_failed": "インポートに失敗しました"
   }
 }

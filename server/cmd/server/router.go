@@ -769,6 +769,9 @@ func NewRouterWithOptions(pool *pgxpool.Pool, hub *realtime.Hub, bus *events.Bus
 				r.Post("/import", h.ImportGitHubRepo)
 			})
 
+			// CSV Import
+			r.Post("/api/csv-import/projects/{projectId}", h.ImportProjectCSV)
+
 			// Squads
 			r.Route("/api/squads", func(r chi.Router) {
 				r.Get("/", h.ListSquads)

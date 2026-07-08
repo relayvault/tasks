@@ -14,6 +14,7 @@ type ModalType =
   | "issue-delete-confirm"
   | "issue-backlog-agent-hint"
   | "github-import"
+  | "csv-import"
   | null;
 
 interface ModalStore {
