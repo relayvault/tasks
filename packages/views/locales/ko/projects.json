@@ -137,5 +137,19 @@
     "importing": "가져오는 중...",
     "import_success": "프로젝트 \"{{project}}\"에 {{count}}개의 이슈를 가져왔습니다",
     "import_failed": "가져오기 실패"
+  },
+  "csv_import": {
+    "button": "CSV 가져오기",
+    "modal_title": "CSV에서 이슈 가져오기",
+    "description": "CSV 파일을 업로드하여 이 프로젝트에 이슈를 일괄 생성합니다. Epic 행은 상위 이슈가 되고 Task 행은 해당 Epic 아래에 중첩됩니다.",
+    "drop_hint": "클릭하여 CSV 파일을 선택하거나 여기에 끌어다 놓으세요",
+    "format_hint": "지원 열: Type, Title, Description, Status, Epic, Labels, Assignee, Due Date. Title만 필수입니다.",
+    "invalid_file": ".csv 파일을 선택해 주세요",
+    "cancel": "취소",
+    "import_button": "가져오기",
+    "importing": "가져오는 중...",
+    "import_success": "{{count}}개의 이슈를 가져왔습니다",
+    "import_partial": "{{count}}개 행이 오류로 인해 건너뛰어졌습니다",
+    "import_failed": "가져오기 실패"
   }
 }

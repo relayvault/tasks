@@ -82,6 +82,7 @@
     "./github": "./github/index.ts",
     "./github/queries": "./github/queries.ts",
     "./github-import": "./github-import/index.ts",
+    "./csv-import": "./csv-import/index.ts",
     "./lark": "./lark/index.ts",
     "./lark/queries": "./lark/queries.ts",
     "./feedback": "./feedback/index.ts",

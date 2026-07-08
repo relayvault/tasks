@@ -2129,6 +2129,19 @@ export class ApiClient {
     });
   }
 
+  // CSV Import
+  async importProjectCSV(projectId: string, csvText: string): Promise<{
+    issues_created: number;
+    rows_total: number;
+    errors: string[] | null;
+  }> {
+    return this.fetch(`/api/csv-import/projects/${projectId}`, {
+      method: "POST",
+      body: csvText,
+      headers: { "Content-Type": "text/csv" },
+    });
+  }
+
   // Lark integration
   async listLarkInstallations(workspaceId: string): Promise<ListLarkInstallationsResponse> {
     return this.fetch(`/api/workspaces/${workspaceId}/lark/installations`);

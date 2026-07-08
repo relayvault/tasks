@@ -137,5 +137,19 @@
     "importing": "Importing...",
     "import_success": "Imported {{count}} issues into project \"{{project}}\"",
     "import_failed": "Import failed"
+  },
+  "csv_import": {
+    "button": "Import CSV",
+    "modal_title": "Import issues from CSV",
+    "description": "Upload a CSV file to bulk-create issues in this project. Epic rows become parent issues and Task rows are nested under their Epic.",
+    "drop_hint": "Click to choose a CSV file, or drag and drop it here",
+    "format_hint": "Expected columns: Type, Title, Description, Status, Epic, Labels, Assignee, Due Date. Only Title is required.",
+    "invalid_file": "Please choose a .csv file",
+    "cancel": "Cancel",
+    "import_button": "Import",
+    "importing": "Importing...",
+    "import_success": "Imported {{count}} issues",
+    "import_partial": "{{count}} rows were skipped due to errors",
+    "import_failed": "Import failed"
   }
 }

@@ -137,5 +137,19 @@
     "importing": "导入中...",
     "import_success": "已将 {{count}} 个议题导入项目「{{project}}」",
     "import_failed": "导入失败"
+  },
+  "csv_import": {
+    "button": "导入 CSV",
+    "modal_title": "从 CSV 导入议题",
+    "description": "上传 CSV 文件以批量创建此项目中的议题。Epic 行将成为父议题，Task 行将嵌套在对应的 Epic 下。",
+    "drop_hint": "点击选择 CSV 文件，或将文件拖放到此处",
+    "format_hint": "支持的列：Type、Title、Description、Status、Epic、Labels、Assignee、Due Date。仅 Title 为必填。",
+    "invalid_file": "请选择 .csv 文件",
+    "cancel": "取消",
+    "import_button": "导入",
+    "importing": "导入中...",
+    "import_success": "已导入 {{count}} 个议题",
+    "import_partial": "{{count}} 行因错误被跳过",
+    "import_failed": "导入失败"
   }
 }
