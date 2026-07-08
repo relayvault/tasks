@@ -67,6 +67,7 @@ func mapCSVStatus(s string) string {
 func parseCSVImportRows(r io.Reader) ([]csvImportRow, error) {
 	reader := csv.NewReader(r)
 	reader.FieldsPerRecord = -1
+	reader.LazyQuotes = true
 
 	header, err := reader.Read()
 	if err != nil {
